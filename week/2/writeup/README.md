@@ -2,7 +2,7 @@ Writeup 2 - OSINT (Open Source Intelligence)
 ======
 
 Name: Evan McIntire
-Section: *PUT YOUR SECTION NUMBER HERE*
+Section: 0201
 
 I pledge on my honor that I have not given or received any unauthorized assistance on this assignment or examination.
 
@@ -18,13 +18,13 @@ Digital acknowledgement of honor pledge: Evan McIntire
 
 From his twitter profile, I found that he owns http://cornerstoneairlines.co and his email is kruegster@tutanota.com. I also found out he lives in Silver Spring, Maryland.
 
-3. http://142.93.118.186/. I found this by pinging the IP.
+3. http://142.93.118.186/. I found this by pinging the http://cornerstoneairlines.co IP.
 
 4. Going to http://cornerstoneairlines.co/robots.txt reveals http://cornerstoneairlines.co/secret, and the Flag: CMSC389R-{fly_th3_sk1es_w1th_u5}
 
 5. http://142.93.117.193/ is the admin page, under contruction - found by just following a link.
 
-6. For the IP the admin page, I found it is hosted with DigitalOcean, and physically located in New Jersey.
+6. For the IP the admin page, I found it is hosted with DigitalOcean, and physically located in New Jersey (using an IP lookup website).
 
 7. It is running Ubuntu, with the Apache web server - going to any 404 page reveals this.
 
@@ -34,9 +34,11 @@ From his twitter profile, I found that he owns http://cornerstoneairlines.co and
 
 First, I ran `nmap 142.93.117.193 -p-` and found a couple of open ports; 1337 being the one of interest. `nc 142.93.117.193 1337` confirmed that when I got a login prompt. I grepped the rockyou passwords for 'pokemon' (based on his interests), and decided to try a few of those passwords before brute forcing with the script.
 
-To my surprise, I got in first try with the username `kruegster` and the password `pokemon`. (I then later finished `stub.py` for completeness)
+To my surprise, I got in first try with the username `kruegster` and the password `pokemon`
 
 From there, going to `/home/flight_records` and running `cat *.txt` gives a lot of flags!
+
+As for `stub.py`, the approach is simple - go through, one line of `rockyou` at a time, and try it along with the username we found. It stops when it reaches the correct one (a message other than fail). I also added `filter` variable which will only try passwords with that string as a substring
 
 ```
 CMSC389R-{c0rn3rstone-air-27600}

