@@ -27,7 +27,7 @@ Digital acknowledgement of honor pledge: Evan McIntire
 
 7. They're expect to see each other 'tomorrow' (Oct 26th)
 
-[Sections](2018-11-02-170833_640x291_scrot.png)
+[Wireshark](2018-11-02-170833_640x291_scrot.png)
 
 ### Part 2 (55 Pts)
 
@@ -38,7 +38,7 @@ Digital acknowledgement of honor pledge: Evan McIntire
 
 3. It says it has 9 sections, but we encounter 11 sections.
 
-4. [Sections](2018-11-02-170727_216x989_scrot.png)
+4. ![Sections](2018-11-02-170727_216x989_scrot.png)
 
 5. From the PNG, CMSC389R-{c0rn3rst0n3_airlin3s_to_the_m00n}
 From diffing section 6, CMSC389R-{PlaIN_DIfF_FLAG}
