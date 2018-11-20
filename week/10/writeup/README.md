@@ -32,6 +32,33 @@ Now that I was able to correctly construct the payload, I tinkered around with t
 
 Answer in hand, I cleaned up and commented the code, and I was finished!
 
+Here's the values involved:
+message: Hello!
+malicious: Hack the planet
+
+hash: 408280c70a3983be9f747181a0e9573b
+fake_hash: d2e8377c312ceb4e3545eaa9e550c61d
+
+payload: 48656c6c6f218000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000004861636b2074686520706c616e6574
+
 ### Part 2 (30 Pts)
 
+Signing a message with gpg is pretty easy!
 
+First, start by creating a key, by running
+
+`gpg --full-generate-key`
+
+Then, import the given public key by running
+
+`gpg --import pgpassignment.key`
+
+Then, list all the current keys by running
+
+`gpg --list-keys`
+
+We see that the key we just added has public key `C140F7019C5FCF20E12A454F9665C74E448C470E`
+
+To sign a message located in a file named `message`, run
+
+`gpg --output message.private --encrypt --recipient president@csec.umiacs.umd.edu message`

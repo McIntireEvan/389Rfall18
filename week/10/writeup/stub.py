@@ -3,6 +3,7 @@
 import md5py
 import socket
 import struct
+import binascii
 
 # TODO: Potential improvements
 # - Prompt user for message/malicious
@@ -94,4 +95,7 @@ for i in range(6, 16):
         print 'Failed'
     else:
         print res
+
+        # From https://stackoverflow.com/questions/21947035/print-string-as-hex-literal-python
+        print binascii.hexlify(payload)
     print '=========================='
